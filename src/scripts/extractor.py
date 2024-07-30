@@ -1,12 +1,12 @@
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import json
 import re
 import sys
 from docx import Document
 from openai import OpenAI
 
-load_dotenv()
+# load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
 if not api_key:
     raise ValueError("No OpenAI API key found in environment variables.")
