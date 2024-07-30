@@ -17,7 +17,8 @@
     "framer-motion": "^11.3.12",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "formidable": "^3.5.1"
   },
   "devDependencies": {
     "@types/formidable": "^3.4.5",
