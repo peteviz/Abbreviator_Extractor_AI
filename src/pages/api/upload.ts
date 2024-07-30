@@ -20,7 +20,7 @@ const extractAbbreviations = async (filePath: string): Promise<string> => {
       console.error('Command stderr:', stderr);
       throw new Error(stderr);
     }
-    return stdout.trim();
+    return stdout.trim(); // No need to JSON.parse here as we're directly using it
   } catch (error) {
     console.error('Error running script:', error);
     throw new Error('Error extracting abbreviations');
@@ -66,8 +66,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const file = fileArray[0];
     const filePath = file.filepath;
 
-    console.log(`File uploaded to ${filePath}`);
-
     const abbreviations = await extractAbbreviations(filePath);
 
     const doc = new Document({
@@ -85,6 +83,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (req.headers.accept?.includes('application/json')) {
       try {
+        // Parse the JSON here
         const parsedAbbreviations = JSON.parse(abbreviations);
         res.status(200).json({ result: parsedAbbreviations });
       } catch (jsonError) {
