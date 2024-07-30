@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
+    "docx": "^8.5.0",
     "framer-motion": "^11.3.12",
     "next": "latest",
     "react": "latest",
