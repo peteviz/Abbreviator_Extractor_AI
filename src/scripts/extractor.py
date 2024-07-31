@@ -1,12 +1,10 @@
 import os
-# from dotenv import load_dotenv
 import json
 import re
 import sys
 from docx import Document
 from openai import OpenAI
 
-# load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
 if not api_key:
     raise ValueError("No OpenAI API key found in environment variables.")
@@ -15,7 +13,7 @@ client = OpenAI(api_key=api_key)
 
 
 def is_abbreviation(word):
-    return re.fullmatch(r'([A-Z]+\.)+|[A-Z]+', word) is not None
+    return len(word) > 1 and re.fullmatch(r'([A-Z]+\.)+[A-Z]*|[A-Z]{2,}', word) is not None
 
 def get_abbreviations_from_docx(file_path):
     doc = Document(file_path)

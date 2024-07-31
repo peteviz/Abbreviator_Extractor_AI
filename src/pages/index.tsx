@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'; 
 import CircularProgress from '@mui/material/CircularProgress';
+import StarsIcon from '@mui/icons-material/Stars';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar'; 
 
@@ -83,7 +84,9 @@ const Home = () => {
         </Button>
       </form>
       {loading ? (
-          <CircularProgress className="mt-6" />
+          <div className="flex flex-col items-center mt-6">
+            <div className="text-lg animate-pulse">Extracting...</div>
+          </div>
         ) : (
       <AnimatePresence>
           {result && (
