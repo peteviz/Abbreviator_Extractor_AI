@@ -38,8 +38,12 @@ const parseForm = (req: NextApiRequest): Promise<{ fields: formidable.Fields; fi
     uploadDir: path.join(process.cwd(), 'uploads'),
     keepExtensions: true,
     maxFileSize: 50 * 1024 * 1024, // 50 MB file size limit
+    filter: ({ mimetype }) => {
+      // Accept only DOCX and PDF files
+      return mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || mimetype === 'application/pdf';
+    },
   });
-
+  
   return new Promise((resolve, reject) => {
     form.parse(req, (err, fields, files) => {
       if (err) reject(err);

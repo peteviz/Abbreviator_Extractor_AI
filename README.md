@@ -21,7 +21,7 @@ This project is an Abbreviation Extractor application built using Next.js, React
 ## Getting Started
 
 ### Prerequisites
-
+    
 - Node.js (>=14.x.x)
 - npm or yarn
 
